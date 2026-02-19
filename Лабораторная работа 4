@@ -1,0 +1,45 @@
+import java.util.Arrays;
+import java.util.Scanner;
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Введите количество элементов массива: ");
+        Scanner scan = new Scanner(System.in);
+        int n = scan.nextInt();
+        int[] sortArr = new int[n];
+        System.out.println("Введите элементы массива: ");
+        for (int i = 0; i < n; i++) {
+            sortArr[i] = scan.nextInt();
+        }
+        System.out.print("Было: ");
+        System.out.println(Arrays.toString(sortArr));
+        shakerSort(sortArr);
+        System.out.print("Стало: ");
+        System.out.println(Arrays.toString(sortArr));
+        scan.close();
+    }
+    public static void shakerSort(int [] valve){
+    int left = 0;
+    int right = valve.length-1;
+    while (left <= right)
+    {
+        for(int i = right; i>left;i--)
+        {
+            if (valve[i-1]< valve[i])
+            {
+                int temp = valve [i];
+                valve [i]=valve[i-1];
+                valve[i-1]=temp;
+            }
+        }
+        ++left;
+        for(int i = left;i < right;++i){
+            if (valve[i]< valve[i+1]){
+                int temp = valve[i+1];
+                valve[i+1]=valve[i];
+                valve[i]=temp;
+            }
+        }
+        --right;
+    }
+    }
+}
