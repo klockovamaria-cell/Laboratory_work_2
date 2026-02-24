@@ -1,0 +1,67 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Выражение y=3x+5");
+        System.out.println("Введите значение x:");
+        int x = scan.nextInt();
+        Expression arr1 = new  Expression(x, 0, 0);
+        arr1. Expression1();
+        System.out.println("Выражение y=(a+b)/(a-b)");
+        System.out.println("Введите значение a:");
+        int a = scan.nextInt();
+        System.out.println("Введите значение b:");
+        int b = scan.nextInt();
+        Expression arr2 = new  Expression(0, a, b);
+        arr2. Expression2();
+        System.out.println("Выражение y=(ax/b)!");
+        System.out.println("Введите значение a:");
+        int a1 = scan.nextInt();
+        System.out.println("Введите значение b:");
+        int b1 = scan.nextInt();
+        System.out.println("Введите значение x:");
+        int x1 = scan.nextInt();
+        Expression arr3 = new  Expression(x1, a1, b1);
+        arr3. Expression3();
+    }
+}
+class  Expression {
+    int x;
+    int a;
+    int b;
+    Expression(int x, int a, int b) {
+        this.x = x;
+        this.a = a;
+        this.b = b;
+    }
+    void  Expression1() {
+        System.out.println("Значение выражения y=3x+5:");
+        System.out.println(3 * this.x + 5);
+    }
+    void  Expression2() {
+        if (a == b) {
+            System.out.println("Ошибка, так как a-b=0, на 0 делить нельзя");
+        } else {
+            System.out.println("Значение выражения y=(a+b)/(a-b):");
+            double result = (double) (this.a + this.b) / (this.a - this.b);
+            System.out.println(result);
+        }
+    }
+    void  Expression3() {
+        if (b == 0) {
+            System.out.println("Ошибка, так как b = 0, на 0 делить нельзя");
+        } else {
+            int result = this.a * this.x / this.b;
+            if (result < 0) {
+                System.out.println("Ошибка, так как значением выражения a*x/b является отрицательные число");
+            } else {
+                int f = 1;
+                for (int i = 2; i <= result; i++) {
+                    f *= i;
+                }
+                System.out.println("Значение выражения y=(ax/b)!:");
+                System.out.println(f);
+            }
+        }
+    }
+}
