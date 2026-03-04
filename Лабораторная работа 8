@@ -1,0 +1,78 @@
+import java.util.Scanner;
+class Person {
+    String I;
+    String F;
+    int year;
+    Person(String I, String F, int year) {
+        this.I = I;
+        this.F = F;
+        this.year = year;
+    }
+    void PrintPerson() {
+        System.out.println("Человек: " + I + " " + F + ", год рождения: " + year);
+    }
+}
+class Car {
+    String marka;
+    int years;
+    int volume;
+    Car(String marka, int years, int volume) {
+        this.marka = marka;
+        this.years = years;
+        this.volume = volume;
+    }
+    void PrintCar() {
+        System.out.println("Автомобиль: " + marka + ", год выпуска: " + years + ", объём двигателя: " + volume + " литров");
+    }
+}
+class Book {
+    String name;
+    String authorf;
+    int date;
+    Book(String name, String authorf, int date) {
+        this.name = name;
+        this.authorf = authorf;
+        this.date = date;
+    }
+    void PrintBook() {
+        System.out.println("Книга: " + name + ", автор: " + authorf + ", год издания: " + date);
+    }
+    void Info(Person p,Car m) {
+        System.out.printf(p.F + " " + p.I + " читает книгу " + this.name + " про машину  " + m.marka);
+    }
+}
+class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Описние человека.");
+        System.out.println("Введите имя: ");
+        String I = scan.nextLine();
+        System.out.println("Введите фамилию: ");
+        String F = scan.nextLine();
+        System.out.println("Введите год рождения: ");
+        int year = scan.nextInt();
+        scan.nextLine();
+        System.out.println("Описание автомобиля.");
+        System.out.println("Введите марку автомобиля: ");
+        String marka = scan.nextLine();
+        System.out.println("Введите год выпуска автомобиля: ");
+        int years = scan.nextInt();
+        System.out.println("Введите объём двигателя автомобиля: ");
+        int volume = scan.nextInt();
+        scan.nextLine();
+        System.out.println("Описание книги.");
+        System.out.println("Введите название книги: ");
+        String name = scan.nextLine();
+        System.out.println("Введите автора книги: ");
+        String authorf = scan.nextLine();
+        System.out.println("Введите год выпуска книги: ");
+        int date = scan.nextInt();
+        Person person = new Person(I, F, year);
+        Car car = new Car(marka, years, volume);
+        Book book = new Book(name, authorf, date);
+        person.PrintPerson();
+        book.Info(person,car);
+        car.PrintCar();
+        book.PrintBook();
+        }
+}
