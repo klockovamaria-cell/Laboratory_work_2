@@ -1,0 +1,71 @@
+import java.util.Scanner;
+class Main {
+    public static void main(String[] args) {
+        Person[] per = new Person[3];
+        Scanner scan = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Гражданин " + (i + 1));
+            System.out.print("Введите фамилию: ");
+            String F = scan.nextLine();
+            System.out.print("Введите имя: ");
+            String I = scan.nextLine();
+            System.out.print("Введите отчество: ");
+            String O = scan.nextLine();
+            System.out.print("Введите адрес: ");
+            String address = scan.nextLine();
+            System.out.print("Введите образование: ");
+            String education = scan.nextLine();
+            System.out.print("Введите год рождения: ");
+            int year = scan.nextInt();
+            per[i] = new Person(F, I, O, address, education, year);
+            System.out.println("Возраст: " + per[i].Age());
+            scan.nextLine();
+        }
+        System.out.println("Введите заданный возраст: ");
+        int voz = scan.nextInt();
+        System.out.println("Список граждан старше " + voz + " лет:");
+        int k = 0;
+        for (int i = 0; i < 3; i++) {
+            if (per[i].Age() > voz) {
+                System.out.println(per[i].F + " " + per[i].I + " " + per[i].O + ", возраст: " + per[i].Age());
+                k++;
+            }
+        }
+        if (k == 0) {
+            System.out.println("Таких граждан нет");
+        }
+        System.out.println("Граждане с высшим образованием:");
+        int n = 0;
+        for (int i = 0; i < 3; i++) {
+            String educationn = per[i].education;
+            switch (educationn) {
+                case "высшее":
+                    System.out.println(per[i].F + " " + per[i].I + " " + per[i].O);
+                    n++;
+                    break;
+            }
+        }
+        if (n == 0) {
+            System.out.println("Таких граждан нет");
+        }
+    }
+}
+class Person {
+    String F;
+    String I;
+    String O;
+    String address;
+    String education;
+    int year;
+Person(String F, String I, String O, String address, String education, int year) {
+      this.F = F;
+      this.I = I;
+      this.O = O;
+      this.address = address;
+      this.education = education;
+      this.year = year;
+    }
+    int Age() {
+        return 2026 - year;
+    }
+}
